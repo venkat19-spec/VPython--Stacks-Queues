@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+section
+{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(oblivion.jpeg);
+    background-position: center;
+    background-size: contain;
+    display: block;
+    align-items: center;
+    padding: 100px;
+}
+
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo
+{
+    position: relative;
+    font-size: 2em;
+    color:#fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+
+
+.content{
+    max-width: initial;
+}
+
+.content .contentBx h4{
+    margin-top: 40px;
+    font-size: 1.5em;
+    color: #fff;
+    line-height: 1em;
+    
+}
+
+.content .contentBx p{
+    font-size: 1em;
+    color: #fff;
+    font-weight: 300;
+    margin: 20px 0;
+    text-align:justify;
+}
+
+.content .contentBx .row{
+    margin-top: 50px;
+    display: flex;
+    height: 300px;
+    margin-bottom: 50px;
+}
+
+.content .contentBx .column {
+    flex: 33.33%;
+    padding: 5px;
+  }
+
+.content .contentBx .box1 h5{
+    margin-top: 40px;
+    font-size: 1.5em;
+    color: #fff;
+    line-height: 1em;
+}
+
+.content .contentBx .box1 p{
+    font-size: 1em;
+    color: #fff;
+    font-weight: 300;
+    word-wrap: normal;
+    margin: 20px 0;
+    text-align:justify;
+}
+
+.content .contentBx .box1 pre{
+    background-color: lightgrey;
+    width: 1000px;
+    border: 1px solid #eaecf0;
+    padding: 1em;
+    text-align: left;
+    white-space: pre-line;
+}
+
+.content .contentBx .box2 h5{
+    margin-top: 60px;
+    font-size: 1.5em;
+    color: #fff;
+    line-height: 1em;
+}
+
+.content .contentBx .box2 p{
+    font-size: 1em;
+    color: #fff;
+    font-weight: 300;
+    word-wrap: normal;
+    margin: 20px 0;
+    text-align:justify;
+}
+
+.content .contentBx .box2 pre{
+    margin-top: 20px;
+    background-color: lightgrey;
+    width: 1000px;
+    border: 1px solid #eaecf0;
+    padding: 1em;
+    text-align: left;
+    white-space: pre-line;
+}
+
+.content .contentBx a{
+    margin-top: 50px;
+    align-items: center;
+    display: inline-block;
+    justify-items: center;
+    margin-right: 500px;
+    padding: 10px 30px;
+    background: #03a9f4;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.content .contentBx .links p{
+    margin-top: 50px;
+    font-size: 1.5em;
+    color: #fff;
+    font-weight: 300;
+    word-wrap: normal;
+    margin: 20px 0;
+    text-align:justify;
+}
+
+.content .contentBx .links mark{
+    background-color: yellow;
+}
+
+.content .contentBx .links a{
+    margin-top: 80px;
+    display: contents;
+    font-size: 1.5em;
+    color: #fff;
+    line-height: 2em;
+}
+
+.content .contentBx .links a:hover{
+    color: #f31212;
+}
+
+
+footer .button a{
+    margin-top: 50px;
+    display: inline-block;
+    padding: 10px 30px;
+    background: #03a9f4;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.content .contentBx .box3 h2 {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+.content .contentBx .box3 table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    margin: 20px 0;
+    width: 76%;
+  }
+
+.content .contentBx .box3 td, th {
+    border: 1px solid #fff;
+    text-align: left;
+    padding: 8px;
+    color: #fff;
+  }
