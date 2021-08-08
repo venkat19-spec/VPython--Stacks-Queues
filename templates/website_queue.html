@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <title>Website Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='website_stack.css')}}">
+</head>
+<body>
+    <section>
+        <header>
+            <a href="#" class="logo">Queues</a>
+        </header>
+        <div class="content">
+
+            <div class="contentBx">
+
+
+                <h4> What is a Queue?</h4>
+                <p> A Queue is a linear structure which follows a particular order in which the operations are performed. The order is First In First Out (FIFO). The difference between stacks and queues is in removing. In a stack we remove the item the most recently added; in a queue, we remove the item the least recently added.</p>
+
+
+                <div class="row">
+                    <div class="column">
+                      <img src="/static/queue1.jpeg" alt="Stack1" style="width:100%; height:100%;">
+                    </div>
+                    <div class="column">
+                      <img src="/static/queue2.jpeg" alt="Stack2" style="width:100%; height:100%;">
+                    </div>
+                    <div class="column">
+                      <img src="/static/queue3.jpeg" alt="Stack3" style="width:100%; height:100%;">
+                    </div>
+                </div>
+
+
+                <h4> How can we implement a Queue?</h4>
+                <p> A queue can be implemented in the following ways: Array and Linked List.</p>
+
+
+                <div class="box1">
+                    <h5> Array </h5>
+                    <p> Structure of the queue is as follows:</p>
+                    <pre>
+                    <b>Structure</b> queue:
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxsize&nbsp;: integer
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;front&nbsp;: integer
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rear&nbsp;: integer
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;items&nbsp;: array of item
+                    </pre>
+                    <p> Intilialising the queue:</p>
+                    <pre>
+                        <b>procedure</b> initialize(que&nbsp;: queue, size&nbsp;: integer):
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.items ← new array of <i>size</i> items, initially empty
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.maxsize ← size
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.front ← 0
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.rear ← -1
+                    </pre>
+                    <p> Enqueueing: &nbsp;&nbsp;&nbsp;Adds an element, increments rear after checking overflow</p>
+                    <pre>
+                        <b>procedure</b>  enqueue(que&nbsp;: queue, x&nbsp;: item):
+                        &nbsp;&nbsp;&nbsp;<b>if</b>  que.rear = que.maxsize - 1:
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;report overflow error
+                        &nbsp;&nbsp;&nbsp;<b>else</b>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.rear ← (que.rear + 1) % maxsize
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.items[que.rear] ← x
+                    </pre>
+                    <p> Dequeueing: &nbsp;&nbsp;&nbsp;Removes an element at front of queue , increments front after checking underflow </p>
+                    <pre>
+                        <b>procedure</b>  dequeue(que&nbsp;: queue, x&nbsp;: item):
+                        &nbsp;&nbsp;&nbsp;<b>if</b>  que.front = que.rear+1:
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;report underflow error
+                        &nbsp;&nbsp;&nbsp;<b>else</b>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r ← que.items[que.front]
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.items[que.front] ← 0
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.front ← (que.front + 1) % maxsize
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return r
+                    </pre>
+                </div>
+
+                <div class="box2">
+                    <h5> Linked List </h5>
+                    <p> Another option to implement stacks. A stack is then a pointer to the "head" of the list, with perhaps a counter to keep track of the size of the list:</p>
+                    <pre>
+                        <b>Structure</b> node:
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;: item
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next&nbsp;: node or nil
+                    </pre>
+                    <pre>
+                        <b>Structure</b> queue:
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head&nbsp;: node or nil
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tail&nbsp;: node or nil
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size&nbsp;: integer
+                    </pre>
+                    <pre>
+                        <b>procedure</b>   initialize(que&nbsp;: queue):
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.head ← nil
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.tail ← nil
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.size ← 0
+                    </pre>
+                    <p> Enqueueing happens at the tail and Dequeueing happens at the head, so no overflow can happen but underflow can happen</p>
+                    <pre>
+                        <b>procedure</b> enqueue(que&nbsp;: queue, x&nbsp;: item):
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp ← new node
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp.data ← x
+                        &nbsp;&nbsp;&nbsp;<b>if</b>  que.tail = nil:
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.head , que.tail ← temp
+                        &nbsp;&nbsp;&nbsp;<b>else</b>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.tail.next ← temp
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.tail ← temp
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.size ← que.size + 1                    
+                    </pre>
+                    <pre>
+                        <b>procedure</b> dequeue(que&nbsp;: queue):
+                        &nbsp;&nbsp;&nbsp;<b>if</b>  que.head = nil:
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;report underflow error
+                        &nbsp;&nbsp;&nbsp;<b>else</b>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp ← que.head
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.head ← temp.next
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp.next ← nil
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.size ← que.size - 1
+                        &nbsp;&nbsp;&nbsp;<b>if</b>  que.head = nil:
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;que.tail ← nil
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return temp.data
+                    </pre>
+                </div>
+
+                <div class="box3">
+                    <h5>Table of Operations</h5>
+
+                    <table>
+                        <tr>
+                            <th>Operation</th>
+                            <th>Syntax</th>
+                            <th>Result</th>
+                        </tr>
+                        <tr>
+                            <td>Enqueue</td>
+                            <td>E x, x is a number</td>
+                            <td>Adds an element in the queue from rear</td>
+                        </tr>
+                         <tr>
+                            <td>Dequeue</td>
+                            <td>D</td>
+                            <td>Removes the element at the front</td>
+                        </tr>
+                        <tr>
+                            <td>Front</td>
+                            <td>FR</td>
+                            <td>Returns frontmost element of the stack</td>
+                        </tr>
+                        <tr>
+                            <td>Rear</td>
+                            <td>RE</td>
+                            <td>Returns rearmost element of the stack</td>
+                        </tr>
+                        <tr>
+                            <td>Is Empty</td>
+                            <td>I</td>
+                            <td>Returns a boolean value if queue is empty or not</td>
+                        </tr>
+                        <tr>
+                            <td>Is Full (only for Array impl.)</td>
+                            <td>F</td>
+                            <td>Returns a boolean value if queue is empty or not</td>
+                        </tr>
+                        <tr>
+                            <td>Length</td>
+                            <td>L</td>
+                            <td>Returns size of the queue</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="links">
+                    <p> <mark> <b>To get a better visual understanding, play around with our programs </b></mark></p>
+                    <a href="https://www.glowscript.org/#/user/Venkataraman_Ranganath/folder/VpythonProj/program/FinalQueueArray"> Queue-as-Array</a>
+                    <br>
+                    <a href="https://www.glowscript.org/#/user/Venkataraman_Ranganath/folder/VpythonProj/program/FinalQueueLinkedList"> Queue-as-Linklist</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer>
+            <div class="button">
+                <a href='/stack'>← Prev</a> 
+            </div> 
+            
+        </footer>
+    </section>
+</body>
+</html>

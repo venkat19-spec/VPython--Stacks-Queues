@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <title>Website Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='website_stack.css')}}">
+</head>
+<body>
+    <section>
+        <header>
+            <a href="#" class="logo">Stacks</a>
+        </header>
+        <div class="content">
+
+            <div class="contentBx">
+
+                <h4> What is a Stack?</h4>
+                <p> Stack is a linear data structure which follows a particular order in which the operations are performed. The order may be LIFO(Last In First Out) or FILO(First In Last Out).</p>
+
+
+                <div class="row">
+                    <div class="column">
+                      <img src="/static/stack1.jpg" alt="Stack1" style="width:100%; height:100%;">
+                    </div>
+                    <div class="column">
+                      <img src="/static/stack2.jpg" alt="Stack2" style="width:100%; height:100%;">
+                    </div>
+                    <div class="column">
+                      <img src="/static/stack3.jpg" alt="Stack3" style="width:100%; height:100%;">
+                    </div>
+                </div>
+
+
+                <h4> How can we implement a Stack?</h4>
+                <p> A stack can be implemented in the following ways: Array and Linked List.</p>
+
+
+                <div class="box1">
+                    <h5> Array </h5>
+                    <p> Structure of the stack is as follows:</p>
+                    <pre>
+                    <b>Structure</b> stack:
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxsize&nbsp;: integer
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top&nbsp;: integer
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;items&nbsp;: array of item
+                    </pre>
+                    <p> Intilialising the stack:</p>
+                    <pre>
+                        <b>procedure</b> initialize(stk&nbsp;: stack, size&nbsp;: integer):
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stk.items ← new array of <i>size</i> items, initially empty
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stk.maxsize ← size
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stk.top ← 0
+                    </pre>
+                    <p> Pushing: &nbsp;&nbsp;&nbsp;Adds an element, increments top after checking overflow</p>
+                    <pre>
+                        <b>procedure</b>  push(stk&nbsp;: stack, x&nbsp;: item):
+                        &nbsp;&nbsp;&nbsp;<b>if</b>  stk.top = stk.maxsize:
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;report overflow error
+                        &nbsp;&nbsp;&nbsp;<b>else</b>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stk.items[stk.top] ← x
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stk.top ← stk.top + 1
+
+                    </pre>
+                    <p> Popping: &nbsp;&nbsp;&nbsp;Decrements top after checking for underflow , then returns the element at previous top </p>
+                    <pre>
+                        <b>procedure</b>  pop(stk&nbsp;: stack, x&nbsp;: item):
+                        &nbsp;&nbsp;&nbsp;<b>if</b>  stk.top = 0:
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;report underflow error
+                        &nbsp;&nbsp;&nbsp;<b>else</b>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stk.top ← stk.top - 1
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r ← stk.items[stk.top]
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return r
+                    </pre>
+                </div>
+
+                <div class="box2">
+                    <h5> Linked List </h5>
+                    <p> Another option to implement stacks. A stack is then a pointer to the "head" of the list, with perhaps a counter to keep track of the size of the list:</p>
+                    <pre>
+                        <b>Structure</b> node:
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;: item
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next&nbsp;: node or nil
+                    </pre>
+                    <pre>
+                        <b>Structure</b> stack:
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head&nbsp;: node or nil
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size&nbsp;: integer
+                    </pre>
+                    <pre>
+                        <b>procedure</b>   initialize(stk&nbsp;: stack):
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stk.head ← nil
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stk.size ← 0
+                    </pre>
+                    <p> Pushing and Popping happens at the head, so no overflow can happen but underflow can happen</p>
+                    <pre>
+                        <b>procedure</b> push(stk&nbsp;: stack, x&nbsp;: item):
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newhead ← new node
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newhead.data ← x
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newhead.next ← stk.head
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stk.head ← newhead
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stk.size ← stk.size + 1                    
+                    </pre>
+                    <pre>
+                        <b>procedure</b> pop(stk&nbsp;: stack):
+                        &nbsp;&nbsp;&nbsp;<b>if</b>  stk.head = nil:
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;report underflow error
+                        &nbsp;&nbsp;&nbsp;r ← stk.head.data
+                        &nbsp;&nbsp;&nbsp;stk.head ← stk.head.next
+                        &nbsp;&nbsp;&nbsp;stk.size ← stk.size - 1
+                        &nbsp;&nbsp;&nbsp;return r
+                    </pre>
+                </div>
+
+                <div class="box3">
+                    <h5>Table of Operations</h5>
+
+                    <table>
+                        <tr>
+                            <th>Operation</th>
+                            <th>Syntax</th>
+                            <th>Result</th>
+                        </tr>
+                        <tr>
+                            <td>Push</td>
+                            <td>P x, x is a number</td>
+                            <td>Pushes an element onto the stack</td>
+                        </tr>
+                         <tr>
+                            <td>Pop</td>
+                            <td>PO</td>
+                            <td>Removes the top element from the stack</td>
+                        </tr>
+                        <tr>
+                            <td>Top</td>
+                            <td>T</td>
+                            <td>Returns top element of the stack</td>
+                        </tr>
+                        <tr>
+                            <td>Is Empty</td>
+                            <td>I</td>
+                            <td>Returns a boolean value if stack is empty or not</td>
+                        </tr>
+                        <tr>
+                            <td>Is Full (only for Array impl.)</td>
+                            <td>F</td>
+                            <td>Returns a boolean value if stack is empty or not</td>
+                        </tr>
+                        <tr>
+                            <td>Length</td>
+                            <td>L</td>
+                            <td>Returns size of the stack</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="links">
+                    <p> <mark> <b>To get a better visual understanding, play around with our programs </b></mark></p>
+                    <a href="https://www.glowscript.org/#/user/Venkataraman_Ranganath/folder/VpythonProj/program/FinalStackArray"> Stack-as-Array</a>
+                    <br>
+                    <a href="https://www.glowscript.org/#/user/Venkataraman_Ranganath/folder/VpythonProj/program/FinalStackLinkedList">Stack-as-Linklist</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer>
+            <div class="button">
+                <a href='/'>← Prev</a> 
+                <a href="/stack/queue"> Next →</a>
+            </div> 
+            
+        </footer>
+    </section>
+</body>
+</html>

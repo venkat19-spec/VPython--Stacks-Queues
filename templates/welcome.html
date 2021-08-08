@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='welcome.css')}}">
+</head>
+
+<body>
+    <section>
+        <header>
+            <a href="#" class="logo">STACKS & QUEUES</a>
+            <ul class="navigation">
+                <li><a href="/stack">Home</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </header>
+        <div class="content">
+            <div class="contentBx">
+                <h2> Explore The World Of Data Structures ...</h2>
+                <p> At Stacks and Queues, we aim at creating a simple application that helps students 
+                    easily understand the concepts of stacks and queues using arrays and linked lists 
+                    with the help of graphic visualization.</p>
+                <a href='/stack'>Get Started</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
